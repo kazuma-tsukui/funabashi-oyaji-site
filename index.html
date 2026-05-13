@@ -1,3 +1,8 @@
+# 船橋おやじの会 WEBサイト強化版
+
+以下を、現在の `index.html` の内容を全部消して、そのまま貼り付けしてください。
+
+```html
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -6,47 +11,171 @@
   <title>船橋おやじの会</title>
 
   <style>
-    body{
+    *{
       margin:0;
-      font-family:sans-serif;
-      background:#f5f5f5;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family: "Yu Gothic", sans-serif;
+      background:#f4f6f9;
       color:#333;
+      line-height:1.8;
     }
 
     header{
-      background:#1f2a44;
+      background:linear-gradient(135deg,#1f2a44,#2f4b7c);
       color:white;
       text-align:center;
-      padding:60px 20px;
+      padding:80px 20px;
     }
 
     header h1{
-      font-size:48px;
-      margin-bottom:10px;
+      font-size:56px;
+      margin-bottom:20px;
     }
 
     header p{
-      font-size:20px;
+      font-size:22px;
+      opacity:0.95;
     }
 
-    section{
-      max-width:1000px;
-      margin:40px auto;
+    nav{
       background:white;
+      position:sticky;
+      top:0;
+      z-index:999;
+      box-shadow:0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    nav ul{
+      display:flex;
+      justify-content:center;
+      list-style:none;
+      flex-wrap:wrap;
+    }
+
+    nav li{
+      margin:10px 20px;
+    }
+
+    nav a{
+      text-decoration:none;
+      color:#1f2a44;
+      font-weight:bold;
+    }
+
+    .container{
+      max-width:1100px;
+      margin:auto;
+      padding:40px 20px;
+    }
+
+    .card{
+      background:white;
+      border-radius:16px;
       padding:40px;
-      border-radius:12px;
-      box-shadow:0 0 10px rgba(0,0,0,0.1);
+      margin-bottom:30px;
+      box-shadow:0 4px 15px rgba(0,0,0,0.08);
     }
 
     h2{
       color:#1f2a44;
       margin-bottom:20px;
+      font-size:32px;
+    }
+
+    .activities{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+      margin-top:20px;
+    }
+
+    .activity-box{
+      background:#f8fafc;
+      padding:25px;
+      border-radius:12px;
+      border-left:6px solid #2f4b7c;
+    }
+
+    .activity-box h3{
+      margin-bottom:10px;
+      color:#1f2a44;
+    }
+
+    .schedule-table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:20px;
+    }
+
+    .schedule-table th,
+    .schedule-table td{
+      border:1px solid #ddd;
+      padding:14px;
+      text-align:left;
+    }
+
+    .schedule-table th{
+      background:#1f2a44;
+      color:white;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:20px;
+      margin-top:20px;
+    }
+
+    .gallery img{
+      width:100%;
+      border-radius:12px;
+      height:220px;
+      object-fit:cover;
+    }
+
+    .cta{
+      text-align:center;
+      background:#1f2a44;
+      color:white;
+      padding:60px 20px;
+      border-radius:20px;
+    }
+
+    .cta a{
+      display:inline-block;
+      margin-top:20px;
+      background:#00c300;
+      color:white;
+      padding:16px 40px;
+      border-radius:999px;
+      text-decoration:none;
+      font-size:20px;
+      font-weight:bold;
     }
 
     footer{
       text-align:center;
-      padding:30px;
+      padding:40px 20px;
       color:#777;
+      font-size:14px;
+    }
+
+    @media(max-width:768px){
+      header h1{
+        font-size:40px;
+      }
+
+      h2{
+        font-size:28px;
+      }
+
+      .card{
+        padding:25px;
+      }
     }
   </style>
 </head>
@@ -55,31 +184,142 @@
 
 <header>
   <h1>船橋おやじの会</h1>
-  <p>父ちゃんパワーで学校をもっと楽しく！</p>
+  <p>父ちゃんパワーで、子ども達と学校をもっと楽しく。</p>
 </header>
 
-<section>
-  <h2>おやじの会とは</h2>
-  <p>
-    船橋市立船橋特別支援学校PTAに所属する、
-    父親中心の活動団体です。
-  </p>
-</section>
-
-<section>
-  <h2>主な活動</h2>
-
+<nav>
   <ul>
-    <li>校内奉仕活動</li>
-    <li>いちよう祭参加</li>
-    <li>家族向けイベント</li>
-    <li>父親向けセミナー</li>
+    <li><a href="#about">おやじの会とは</a></li>
+    <li><a href="#activities">活動内容</a></li>
+    <li><a href="#schedule">年間予定</a></li>
+    <li><a href="#gallery">活動写真</a></li>
+    <li><a href="#join">参加案内</a></li>
   </ul>
-</section>
+</nav>
+
+<div class="container">
+
+  <section class="card" id="about">
+    <h2>おやじの会とは</h2>
+
+    <p>
+      船橋市立船橋特別支援学校PTAに所属する、
+      父親中心の活動団体です。
+    </p>
+
+    <br>
+
+    <p>
+      子ども達や学校、そして家族同士の交流を大切にしながら、
+      無理なく・楽しく参加できる活動を目指しています。
+    </p>
+  </section>
+
+  <section class="card" id="activities">
+    <h2>主な活動</h2>
+
+    <div class="activities">
+
+      <div class="activity-box">
+        <h3>🎪 学校イベント参加</h3>
+        <p>いちよう祭など学校行事への参加・サポートを行います。</p>
+      </div>
+
+      <div class="activity-box">
+        <h3>🍖 家族交流イベント</h3>
+        <p>BBQやレクリエーションなど、家族で楽しめる活動を企画。</p>
+      </div>
+
+      <div class="activity-box">
+        <h3>🛠 校内奉仕活動</h3>
+        <p>学校設備の簡単な整備やサポート活動を実施しています。</p>
+      </div>
+
+      <div class="activity-box">
+        <h3>🎤 セミナー・交流会</h3>
+        <p>父親同士の情報交換や学びの場も大切にしています。</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="card" id="schedule">
+    <h2>年間予定</h2>
+
+    <table class="schedule-table">
+      <tr>
+        <th>月</th>
+        <th>活動内容</th>
+      </tr>
+
+      <tr>
+        <td>5月</td>
+        <td>総会・顔合わせ</td>
+      </tr>
+
+      <tr>
+        <td>7月</td>
+        <td>夏イベント企画</td>
+      </tr>
+
+      <tr>
+        <td>10月</td>
+        <td>いちよう祭参加</td>
+      </tr>
+
+      <tr>
+        <td>12月</td>
+        <td>交流会</td>
+      </tr>
+
+    </table>
+  </section>
+
+  <section class="card" id="gallery">
+    <h2>活動写真</h2>
+
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1200&auto=format&fit=crop" alt="活動写真">
+
+      <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1200&auto=format&fit=crop" alt="活動写真">
+
+      <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=1200&auto=format&fit=crop" alt="活動写真">
+    </div>
+  </section>
+
+  <section class="cta" id="join">
+    <h2>参加メンバー募集中！</h2>
+
+    <p>
+      「少しだけ参加してみたい」でも大歓迎です。
+      無理なく、楽しく、一緒に活動しませんか？
+    </p>
+
+    <a href="#">
+      LINEで問い合わせ
+    </a>
+  </section>
+
+</div>
 
 <footer>
-  © 船橋おやじの会
+  © 2026 船橋おやじの会
 </footer>
 
 </body>
 </html>
+```
+
+---
+
+更新手順
+
+① index.html を開く
+② 中身を全部消す
+③ 上のコードを貼り付け
+④ 保存（Ctrl + S）
+⑤ GitHub Desktop に戻る
+⑥ Commit to main
+⑦ Push origin
+
+これでサイトが自動更新されます。
